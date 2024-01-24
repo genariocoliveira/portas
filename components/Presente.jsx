@@ -6,7 +6,7 @@ export default function Presente() {
       <div className={styles.tampa}></div>
       <div className={styles.corpo}></div>
       <div className={styles.laco1}></div>
-      <div className={styles.laco2}>a</div>
+      <div className={styles.laco2}></div>
     </div>
   )
 }
