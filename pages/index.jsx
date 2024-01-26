@@ -5,7 +5,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div className={inter.className}>
+    <div className={inter.className} style={{display: 'flex'}}>
+      <Porta selecionada/>
       <Porta />
     </div>
   )
