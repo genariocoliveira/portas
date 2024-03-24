@@ -8,9 +8,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
-export default function jogo() {
+export default function Jogo() {
     const router = useRouter()
-    // const [p1, setP1 ] = useState(new PortaModel(1))
 
     const [valido, setValido] = useState(false)
     const [portas, setPortas] = useState([])
@@ -24,7 +23,7 @@ export default function jogo() {
 
         setValido(qtdePortasValida && temPresenteValido)
 
-    }, [portas])
+    }, [portas, router.query.portas,  router.query.temPresente])
 
     useEffect(() => {
         const portas = +router.query.portas
