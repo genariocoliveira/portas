@@ -9,10 +9,22 @@ import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 export default function jogo() {
-    const  router = useRouter()
+    const router = useRouter()
     // const [p1, setP1 ] = useState(new PortaModel(1))
 
+    const [valido, setValido] = useState(false)
     const [portas, setPortas] = useState([])
+
+    useEffect(() => {
+        const portas = +router.query.portas
+        const temPresente = +router.query.temPresente
+
+        const qtdePortasValida = portas >= 3 && portas <= 100
+        const temPresenteValido = temPresente >= 1 && temPresente <= portas
+
+        setValido(qtdePortasValida && temPresenteValido)
+
+    }, [portas])
 
     useEffect(() => {
         const portas = +router.query.portas
@@ -33,7 +45,9 @@ export default function jogo() {
         <div className={inter.className} id={styles.jogo}>
             {/* <Porta value={ p1 } onChange={novaPorta => setP1(novaPorta)}/> */}
             <div className={styles.portas}>
-                {renderizarPortas()}
+                {valido ?
+                    renderizarPortas() : 
+                    <h2>Valores inválidos</h2>}
             </div>
             <div className={styles.botoes}>
                 <Link href="/">
